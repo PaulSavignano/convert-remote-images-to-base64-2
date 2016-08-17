@@ -18,13 +18,14 @@ export class Base64 extends Component {
         Bert.alert(error.reason, 'danger')
       }
       if (result) {
-        url.value = ''
+        remoteUrl.value = ''
         base64String.value = result
-        component.setState({ base64String: result })
+        this.setState({ base64String: result })
       }
     })
   }
   renderPreview() {
+    console.log(this.state)
     return this.state.base64String ?
     <img
       src={`data:image/png;base64,${this.state.base64String}`}
@@ -45,7 +46,7 @@ export class Base64 extends Component {
           />
         </FormGroup>
         <FormGroup>
-          { this.renderPreview }
+          { this.renderPreview() }
           <textarea
             ref="base64String"
             className="form-control"
